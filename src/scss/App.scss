@@ -1,0 +1,13 @@
+#component-app {
+
+}
+
+// appwide styles
+.align-center {
+  display: flex;
+  justify-content: center;
+}
+
+button + button {
+  margin-left: 1em;
+}
