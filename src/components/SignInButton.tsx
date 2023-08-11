@@ -14,23 +14,29 @@ export const SignInButton = ({ route }: SignInButtonProps) => {
 
   const signIn = async () => {
     // trigger sign in with extension
-    const success = await getPublicKey()
-    if (success) {
-      // store pubkey in identity provider
-      setIdentity({pubkey: success})
-      // redirect to account page
-      navigate('/login')
-    } else {
-      // trigger "key not set up yet" dialog
+    try {
+      const success = await getPublicKey()
+      if (success) {
+        // store pubkey in identity provider
+        setIdentity({pubkey: success})
+        // redirect to account page
+        navigate('/login')
+      } else {
+        // trigger "key not set up yet" dialog
+        console.log('not success', success)
+      }
+    } catch (e) {
+      console.log('sign in failed:', e)
+      // TODO: provide info on how to get a NIP-07 extension.
     }
   }
   if (isIdentityFresh()) {
     return (
-      <button onClick={() => navigate(route)}>Opt In to Freedom</button>
+      <button onClick={() => navigate(route)}>Start Your Engines</button>
     )
   } else {
     return (
-      <button onClick={signIn}>Sign in with Extension</button>
+      <button onClick={signIn}>Sign In</button>
     )
   }
 }

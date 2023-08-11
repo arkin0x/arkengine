@@ -15,15 +15,9 @@ declare global {
  * @returns pubkey:string|null
  */
 export const getPublicKey = async (): Promise<string|null> => {
-  let pubkey: string
-  try {
-    pubkey = await window.nostr.getPublicKey()
-    console.log(pubkey)
-    return pubkey
-  } catch (e) {
-    console.log('getPublicKey() failed:',e)
-    return null
-  }
+  const pubkey: string = await window.nostr.getPublicKey()
+  console.log(pubkey)
+  return pubkey
 }
 
 /**
