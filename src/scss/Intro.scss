@@ -1,8 +1,21 @@
 #component-intro {
   .content {
+    .logo {
+      display: block;
+      margin: 0 auto;
+      width: 80vw;
+      @media screen and (min-width: 768px) {
+        width: 50vw;
+      }
+      padding-top: 10vh;
+    }
     h1.title {
-      font-size: 7em;
+      font-size: 10vw;
       margin: 0;
+    }
+    .subtitle {
+      font-size: 4vw;
+      margin-bottom: 2rem;
     }
     .title, .subtitle {
       font-family: "Major Mono Display", "Share Tech Mono", monospace;
